@@ -1,0 +1,30 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Marketplace
+    network: goerli
+    source:
+      address: "0xad471fa4259082763c0A31570f22Aa5caEe6A249"
+      abi: Marketplace
+      startBlock: 7630636
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - listingCanceled
+        - newListing
+        - sale
+      abis:
+        - name: Marketplace
+          file: Marketplace\abis\Marketplace.json
+      eventHandlers:
+        - event: listingCanceled(address,address,uint256)
+          handler: handlelistingCanceled
+        - event: newListing(address,address,uint256,uint256)
+          handler: handlenewListing
+        - event: sale(address,address,address,uint256,uint256)
+          handler: handlesale
+      file: Marketplace\Marketplace.wasm

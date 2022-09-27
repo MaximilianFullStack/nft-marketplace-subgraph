@@ -1,0 +1,32 @@
+type ActiveItem @entity {
+  id: ID!
+  buyer: Bytes!
+  seller: Bytes! # address
+  erc721: Bytes! # address
+  tokenId: BigInt!
+  price: BigInt
+}
+
+type NewListing @entity {
+  id: ID!
+  seller: Bytes!
+  erc721: Bytes!
+  tokenId: BigInt!
+  price: BigInt
+}
+
+type ListingCancled @entity {
+  id: ID!
+  seller: Bytes!
+  erc721: Bytes!
+  tokenId: BigInt!
+}
+
+type Sale @entity {
+  id: ID!
+  buyer: Bytes!
+  seller: Bytes!
+  erc721: Bytes!
+  tokenId: BigInt!
+  price: BigInt
+}
